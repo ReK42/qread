@@ -38,7 +38,7 @@ To check:
 ```sh
 mypy src
 ruff check src
-ruff format --check src
+ruff format --diff src
 ```
 
 To auto-fix/format:
