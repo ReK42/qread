@@ -58,7 +58,7 @@ jobs:
         run: ruff check src
 
       - name: Format
-        run: ruff format --check src
+        run: ruff format --diff src
 
       - name: Test
         run: qread --version
