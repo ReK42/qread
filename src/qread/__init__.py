@@ -1,4 +1,4 @@
-"""PROJECT_DESC"""
+"""Read a QR code from an image file."""
 
 from typing import Any
 
@@ -13,4 +13,4 @@ def export(defn: Any) -> None:  # noqa: ANN401
 
 
 __copyright__ = "Copyright (c) 2024 Ryan Kozak"
-from MODULE_NAME._version import __version__
+from qread._version import __version__

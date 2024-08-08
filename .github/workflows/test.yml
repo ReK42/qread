@@ -61,4 +61,4 @@ jobs:
         run: ruff format --check src
 
       - name: Test
-        run: PROJECT_NAME --version
+        run: qread --version

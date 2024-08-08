@@ -1,4 +1,4 @@
-"""Collect and plot detailed information and statistics from your modem."""
+"""Read a QR code from an image file."""
 
 from datetime import datetime, timezone
 from typing import TYPE_CHECKING
@@ -6,8 +6,7 @@ from typing import TYPE_CHECKING
 import click
 from rich.console import Console
 
-from MODULE_NAME import __name__, __version__, __copyright__
-
+from qread import __copyright__, __name__, __version__
 
 if TYPE_CHECKING:
     from collections.abc import Callable
@@ -16,16 +15,12 @@ if TYPE_CHECKING:
 _version: str = f"{__name__} v{__version__} -- {__copyright__}"
 
 
-@click.group()
+@click.command()
 @click.help_option("-h", "--help")
 @click.version_option(__version__, "-v", "--version", message=_version)
 @click.pass_context
 def main(ctx: click.Context) -> None:
-    """
-    PROJECT_DESC
-
-    Run PROJECT_NAME COMMAND --help for details on each command.
-    """
+    """Read a QR code from an image file."""
     ctx.ensure_object(dict)
 
     log_time_format: str = "[%Y-%m-%dT%H:%M:%S.%f%z]"

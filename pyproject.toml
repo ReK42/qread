@@ -2,9 +2,9 @@
 # Project and Packaging #
 #########################
 [project]
-name = "PROJECT_NAME"
+name = "qread"
 dynamic = ["version"]
-description = "PROJECT_DESC"
+description = "Read a QR code from an image file."
 requires-python = ">=3.9"
 readme = "README.md"
 license = {file = "LICENSE"}
@@ -35,11 +35,11 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/ReK42/PROJECT_NAME"
-Issues = "https://github.com/ReK42/PROJECT_NAME/issues"
+Repository = "https://github.com/ReK42/qread"
+Issues = "https://github.com/ReK42/qread/issues"
 
 [project.scripts]
-PROJECT_NAME = "MODULE_NAME.__main__:main"
+qread = "qread.__main__:main"
 
 [project.optional-dependencies]
 test = [
@@ -65,11 +65,11 @@ zip-safe = false
 where = ["src"]
 
 [tool.setuptools.package-data]
-MODULE_NAME = ["py.typed"]
+qread = ["py.typed"]
 
 [tool.setuptools_scm]
 local_scheme = "no-local-version"
-write_to = "src/MODULE_NAME/_version.py"
+write_to = "src/qread/_version.py"
 tag_regex = '^(?:[\w-]+[-/])?(?P<version>[vV]?\d+(?:\.\d+){0,2}[^\+]*)(?:\+.*)?$'
 fallback_version = "0.0.1.dev1"
 

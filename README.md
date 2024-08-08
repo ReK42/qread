@@ -1,34 +1,27 @@
-# PROJECT_NAME
-[![PyPi Version](https://img.shields.io/pypi/v/PROJECT_NAME.svg)](https://pypi.python.org/pypi/PROJECT_NAME)
-[![PyPI Status](https://img.shields.io/pypi/status/PROJECT_NAME.svg)](https://pypi.python.org/pypi/PROJECT_NAME)
-[![Python Versions](https://img.shields.io/pypi/pyversions/PROJECT_NAME.svg)](https://pypi.python.org/pypi/PROJECT_NAME)
-[![License](https://img.shields.io/github/license/ReK42/PROJECT_NAME)](https://github.com/ReK42/PROJECT_NAME/blob/main/LICENSE)
-[![Last Commit](https://img.shields.io/github/last-commit/ReK42/PROJECT_NAME/main?logo=github)](https://github.com/ReK42/PROJECT_NAME/commits/main)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/ReK42/PROJECT_NAME/build.yml?logo=github)](https://github.com/ReK42/PROJECT_NAME/actions)
+# qread
+[![PyPi Version](https://img.shields.io/pypi/v/qread.svg)](https://pypi.python.org/pypi/qread)
+[![PyPI Status](https://img.shields.io/pypi/status/qread.svg)](https://pypi.python.org/pypi/qread)
+[![Python Versions](https://img.shields.io/pypi/pyversions/qread.svg)](https://pypi.python.org/pypi/qread)
+[![License](https://img.shields.io/github/license/ReK42/qread)](https://github.com/ReK42/qread/blob/main/LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/ReK42/qread/main?logo=github)](https://github.com/ReK42/qread/commits/main)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/ReK42/qread/build.yml?logo=github)](https://github.com/ReK42/qread/actions)
 
-PROJECT_DESC
-
-# TODO
-1. Find & replace PROJECT_NAME with the CLI command/PyPI project/Github repo name.
-1. Find & replace MODULE_NAME with the project's Python root module name (`src/MODULE_NAME)`.
-1. Find & replace PROJECT_DESC with the one-line project description.
-1. Update `src/MODULE_NAME/__init__.py`
-1. Begin coding...
+Read a QR code from an image file.
 
 ## Installation
-Install [Python](https://www.python.org/downloads/), then install [pipx](https://github.com/pypa/pipx) and use it to install `PROJECT_NAME`:
+Install [Python](https://www.python.org/downloads/), then install [pipx](https://github.com/pypa/pipx) and use it to install `qread`:
 ```sh
-pipx install PROJECT_NAME
+pipx install qread
 ```
 
 ## Usage
-For all options, run `PROJECT_NAME <COMMAND> --help`
+For all options, run `qread --help`
 
 ## Development Environment
 ### Installation
 ```sh
-git clone https://github.com/ReK42/PROJECT_NAME.git
-cd PROJECT_NAME
+git clone https://github.com/ReK42/qread.git
+cd qread
 python -m venv .env
 source .env/bin/activate
 python -m pip install --upgrade pip pre-commit
