@@ -30,8 +30,7 @@ classifiers = [
     "Typing :: Typed",
 ]
 dependencies = [
-    "click == 8.1.7",
-    "rich == 13.7.1",
+    "opencv-python == 4.10.0.84",
 ]
 
 [project.urls]
@@ -45,7 +44,6 @@ qread = "qread.__main__:main"
 test = [
     "mypy == 1.11.1",
     "ruff == 0.5.6",
-    "black == 24.8.0",
 ]
 build = [
     "setuptools == 72.1.0",

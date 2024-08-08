@@ -1,40 +1,61 @@
 """Read a QR code from an image file."""
 
-from datetime import datetime, timezone
-from typing import TYPE_CHECKING
-
-import click
-from rich.console import Console
+import os
+import sys
+from argparse import ArgumentParser, Namespace
+from pathlib import Path
 
 from qread import __copyright__, __name__, __version__
 
-if TYPE_CHECKING:
-    from collections.abc import Callable
+os.environ["OPENCV_LOG_LEVEL"] = "OFF"
+from cv2 import QRCodeDetector, error, imread
+from cv2.typing import MatLike
 
 
-_version: str = f"{__name__} v{__version__} -- {__copyright__}"
+def err(msg: str, retval: int = 1) -> None:
+    """Print an error message to stderr and exit with a non-zero return value."""
+    sys.stderr.write(f"{__name__}: error: {msg}\n")
+    sys.exit(retval)
 
 
-@click.command()
-@click.help_option("-h", "--help")
-@click.version_option(__version__, "-v", "--version", message=_version)
-@click.pass_context
-def main(ctx: click.Context) -> None:
-    """Read a QR code from an image file."""
-    ctx.ensure_object(dict)
+# Build CLI
+parser: ArgumentParser = ArgumentParser(
+    prog=__name__,
+    description="Read a QR code from an image file.",
+    add_help=False,
+)
+parser.add_argument(
+    "-h",
+    "--help",
+    action="help",
+    help="Show this help message and exit.",
+)
+parser.add_argument(
+    "-v",
+    "--version",
+    action="version",
+    help="Show version and exit.",
+    version=f"{__name__} v{__version__} -- {__copyright__}",
+)
+parser.add_argument("filename", type=Path, help="Image file containing a QR code.")
+args: Namespace = parser.parse_args()
 
-    log_time_format: str = "[%Y-%m-%dT%H:%M:%S.%f%z]"
-    get_datetime: Callable = lambda: datetime.now(timezone.utc).astimezone()  # noqa: E731
-    ctx.obj["stdout"] = Console(
-        log_time_format=log_time_format,
-        get_datetime=get_datetime,
-    )
-    ctx.obj["stderr"] = Console(
-        log_time_format=log_time_format,
-        get_datetime=get_datetime,
-        stderr=True,
-    )
+# Try to read in the image file
+image: MatLike = imread(args.filename)
+if image is None:
+    err(f"unable to read image file {args.filename}")
 
+# Try to detect the QR code
+data: str
+points: MatLike
+detector: QRCodeDetector = QRCodeDetector()
+try:
+    data, points, _ = detector.detectAndDecode(image)
+except error as e:
+    err(f"opencv error {e.err}")
+if points is None:
+    err("no qr codes detected")
 
-if __name__ == "__main__":
-    main(obj={})
+# Finish
+sys.stdout.write(f"{data}\n")
+sys.exit()

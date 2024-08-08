@@ -15,6 +15,10 @@ pipx install qread
 ```
 
 ## Usage
+```sh
+qread <qr code image file>
+```
+
 For all options, run `qread --help`
 
 ## Development Environment
